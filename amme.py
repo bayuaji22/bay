@@ -2517,11 +2517,11 @@ def bot(op):
                                 pass
 
  
-            elif "bayuku" == msg.text:
+            elif "anna" == msg.text:
 		    if msg.from_ in Creator:
                      if msg.toType == 2:
                         print "Kick all member"
-                        _name = msg.text.replace("bayuku","")
+                        _name = msg.text.replace("anna","")
                         gs = bay.getGroup(msg.to)
                         bay.sendText(msg.to,"Dadaaah~")
                         targets = []
