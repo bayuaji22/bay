@@ -68,7 +68,7 @@ helpMessage ="""
 KAC=[cl]
 mid = cl.getProfile().mid
 Bots=[mid]
-admin=["u39e89bf92deb47d7b9d4f213e1810dad"]
+admin=["uae7a4da83bdd7a1492e8a8c84d9ac2a7"]
 
 contact = cl.getProfile()
 backup1 = cl.getProfile()
