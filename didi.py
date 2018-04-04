@@ -8,9 +8,9 @@ from googletrans import Translator
 from gtts import gTTS
 import time,random,sys,json,codecs,threading,glob,urllib,urllib2,urllib3,re,ast,os,subprocess,requests,tempfile,pytz
 
-ka = LINETCR.LINE()
-ka.login(token="Erf3m3KwsEUTH6pEuB0f.1CoDT6S0YL/Xx5N+7ZeeFW.lW0vHC5JmYw67PnYy7PAt/6zFNa1yecJmOBSYdwIi5c=")
-ka.loginResult()
+cl = LINETCR.LINE()
+cl.login(token="Erz8mugvuZmbZJeASBM7.RNPnQdVDEHss6kJitzRcPW.r+anB3FwtOhVI8xdVMWbs4dPFONzzP6SRdoh/ful5so=")
+cl.loginResult()
 
 print "login success"
 reload(sys)
@@ -65,13 +65,13 @@ helpMessage ="""
 ╠ Mybackup
 ╚═══[ Help Finish ]
 """
-KAC=[ka]
-mid = ka.getProfile().mid
+KAC=[cl]
+mid = cl.getProfile().mid
 Bots=[mid]
-admin=["ud5c39db7ab34ca5fb15f99ffef31047f"]
+admin=["uae7a4da83bdd7a1492e8a8c84d9ac2a7"]
 
-contact = ka.getProfile()
-backup1 = ka.getProfile()
+contact = cl.getProfile()
+backup1 = cl.getProfile()
 backup1.displayName = contact.displayName
 backup1.statusMessage = contact.statusMessage                        
 backup1.pictureStatus = contact.pictureStatus
@@ -84,7 +84,7 @@ wait = {
     "copy":{},
     "steal":{},
     "detectMention":False,
-    "detectMention2":False,
+    "detectMention2":True,
     "detectMention3":False,
     "lang":"JP",
     "Sambutan":False,
@@ -301,7 +301,7 @@ def summon(to, nama):
     msg.contentMetadata ={'MENTION':'{"MENTIONEES":['+aa+']}','EMTVER':'4'}
     print "[Command] Tag All"
     try:
-       ka.sendMessage(msg)
+       cl.sendMessage(msg)
     except Exception as error:
        print error
 
@@ -315,8 +315,8 @@ def bot(op):
             return
         if op.type == 5:
             if wait["autoAdd"] == True:
-                ka.findAndAddContactsByMid(op.param1)
-                ka.sendMention(op.param1, op.param1, "Halo", ", terimakasih telah menambahkan saya sebagai teman")
+                cl.findAndAddContactsByMid(op.param1)
+                cl.sendMention(op.param1, op.param1, "Halo", ", terimakasih telah menambahkan saya sebagai teman")
 #==============================================================================#
         if op.type == 55:
 	    try:
@@ -330,7 +330,7 @@ def bot(op):
                 try:
                     if cctv['cyduk'][op.param1]==True:
                         if op.param1 in cctv['point']:
-                            Name = ka.getContact(op.param2).displayName
+                            Name = cl.getContact(op.param2).displayName
                             if Name in cctv['sidermem'][op.param1]:
                                 pass
                             else:
@@ -338,15 +338,15 @@ def bot(op):
                                 if " " in Name:
                                     nick = Name.split(' ')
                                     if len(nick) == 2:
-                                        ka.sendText(op.param1, "oy " + "[ " + Name + " ]" + "\nJangan Ngintip Aja\nSini ikutan Chat😁   ")
+                                        cl.sendText(op.param1, "oy " + "[ " + Name + " ]" + "\nJangan Ngintip Aja\nSini ikutan Chat😁   ")
                                         time.sleep(0.2)
                                         summon(op.param1,[op.param2])
                                     else:
-                                        ka.sendText(op.param1, "ahay " + "[ " + Name + " ]" + "\nKetauan Ngintip \nSini ikutan Chat😁   ")
+                                        cl.sendText(op.param1, "ahay " + "[ " + Name + " ]" + "\nKetauan Ngintip \nSini ikutan Chat😁   ")
                                         time.sleep(0.2)
                                         summon(op.param1,[op.param2])
                                 else:
-                                    ka.sendText(op.param1, "Haii " + "[ " + Name + " ]" + "\nJangan Ngintip Aja\nSini ikutan Chat😁   ")
+                                    cl.sendText(op.param1, "Haii " + "[ " + Name + " ]" + "\nJangan Ngintip Aja\nSini ikutan Chat😁   ")
                                     time.sleep(0.2)
                                     summon(op.param1,[op.param2])
                         else:
@@ -360,28 +360,28 @@ def bot(op):
             pass 
 #==============================================================================#
         if op.type == 22:
-            ka.leaveRoom(op.param1)
+            cl.leaveRoom(op.param1)
 
         if op.type == 21:
-            ka.leaveRoom(op.param1)
+            cl.leaveRoom(op.param1)
 #==============================================================================#
         if op.type == 13:
             print op.param1
             print op.param2
             print op.param3
             if mid in op.param3:
-                G = ka.getGroup(op.param1)
+                G = cl.getGroup(op.param1)
                 if wait["autoJoin"] == True:
                     if wait["autoCancel"]["on"] == True:
                         if len(G.members) <= wait["autoCancel"]["members"]:
-                            ka.rejectGroupInvitation(op.param1)
+                            cl.rejectGroupInvitation(op.param1)
                         else:
-                            ka.acceptGroupInvitation(op.param1)
+                            cl.acceptGroupInvitation(op.param1)
                     else:
-                        ka.acceptGroupInvitation(op.param1)
+                        cl.acceptGroupInvitation(op.param1)
                 elif wait["autoCancel"]["on"] == True:
                     if len(G.members) <= wait["autoCancel"]["members"]:
-                        ka.rejectGroupInvitation(op.param1)
+                        cl.rejectGroupInvitation(op.param1)
             else:
                 Inviter = op.param3.replace("",',')
                 InviterX = Inviter.split(",")
@@ -391,33 +391,33 @@ def bot(op):
                 if matched_list == []:
                     pass
                 else:
-                    ka.cancelGroupInvitation(op.param1, matched_list)
+                    cl.cancelGroupInvitation(op.param1, matched_list)
 #==============================================================================#
         if op.type == 17:
           if wait["Sambutan"] == True:
             if op.param2 in admin:
                 return
-            ginfo = ka.getGroup(op.param1)
-            contact = ka.getContact(op.param2)
+            ginfo = cl.getGroup(op.param1)
+            contact = cl.getContact(op.param2)
             image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-            ka.sendText(op.param1,"Hallo " + ka.getContact(op.param2).displayName + "\nWelcome To ☞ " + str(ginfo.name) + " ☜" + "\nBudayakan Cek Note\nDemoga Betah ^_^")
+            cl.sendText(op.param1,"Hallo " + cl.getContact(op.param2).displayName + "\nWelcome To ☞ " + str(ginfo.name) + " ☜" + "\nBudayakan Cek Note\nDemoga Betah ^_^")
             c = Message(to=op.param1, from_=None, text=None, contentType=13)
             c.contentMetadata={'mid':op.param2}
-            ka.sendMessage(c)  
-            ka.sendImageWithURL(op.param1,image)
+            cl.sendMessage(c)  
+            cl.sendImageWithURL(op.param1,image)
             d = Message(to=op.param1, from_=None, text=None, contentType=7)
             d.contentMetadata={
                                     "STKID": "247",
                                     "STKPKGID": "3",
                                     "STKVER": "100" }                
-            ka.sendMessage(d)             
+            cl.sendMessage(d)             
             print "MEMBER JOIN TO GROUP"
 #==============================================================================#
         if op.type == 26:
             msg = op.message                                          
             if 'MENTION' in msg.contentMetadata.keys() != None:
                  if wait["detectMention"] == True:
-                     contact = ka.getContact(msg.from_)
+                     contact = cl.getContact(msg.from_)
                      cName = contact.displayName
                      balas = ["Dont Tag!! Lagi Sibuk",cName + " Oit!",cName + " Nggak Usah Tag-Tag! Penting Langsung Pm Aja"," Lagi Off", cName + " lagi kerja"]
                      ret_ = random.choice(balas)
@@ -426,40 +426,34 @@ def bot(op):
                      mentionees = mention['MENTIONEES']
                      for mention in mentionees:
                            if mention['M'] in Bots:
-                                  ka.sendText(msg.to,ret_)
+                                  cl.sendText(msg.to,ret_)
                                   msg.contentType = 7   
                                   msg.text = None
                                   msg.contentMetadata = {
                                                        "STKID": "165",
                                                        "STKPKGID": "2",
                                                        "STKVER": "100" }
-                                  ka.sendMessage(msg)                     
+                                  cl.sendMessage(msg)                     
                                   break   
 #==============================================================================#    
             if 'MENTION' in msg.contentMetadata.keys() != None:
                  if wait["detectMention2"] == True:          
-                    contact = ka.getContact(msg.from_)
+                    contact = cl.getContact(msg.from_)
                     cName = contact.displayName
-                    balas = ["🇭 🇦 🇩 🇮 🇷 "]
+                    balas = ["Saduk i we " + cName + " ngtag2 ae ","Sekali lagi nge tag gw sumpahin jomblo seumur hidup!","Dont Tag!! Lagi Sibuk",cName + " Ngapain Ngetag?",cName + " Nggak Usah Tag-Tag! Kalo Penting Langsung Pc Aja","Tag Mulu Lo asem!","Dia Lagi Off", cName + " Kenapa Tag? Kangen?","Dia Lagi Tidur\nJangan Di Tag " + cName, "Jangan Suka Tag Gua " + cName, "Kamu Siapa " + cName + "?", "Ada Perlu Apa " + cName + "?","Woii " + cName + " Jangan Ngetag, Riibut!"]
                     ret_ = random.choice(balas)
                     name = re.findall(r'@(\w+)', msg.text)
                     mention = ast.literal_eval(msg.contentMetadata['MENTION'])
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
                            if mention['M'] in Bots:
-                                  ka.sendText(msg.to,ret_)
-                                  msg.contentType = 7   
-                                  msg.text = None
-                                  msg.contentMetadata = {
-                                                       "STKID": "128",
-                                                       "STKPKGID": "1",
-                                                       "STKVER": "100" }
-                                  ka.sendMessage(msg)                                
+                                  cl.sendText(msg.to,ret_)
+                                                               
                                   break
 #==============================================================================#                 
             if 'MENTION' in msg.contentMetadata.keys() != None:
                  if wait["detectMention3"] == True:          
-                    contact = ka.getContact(msg.from_)
+                    contact = cl.getContact(msg.from_)
                     cName = contact.displayName
                     balas = ["Nah ☆☞ " + cName + " ☜☆"]
                     balas1 = "Ini Foto Si Jones Yang Suka Ngetag⬇️⬇️⬇️"
@@ -470,29 +464,29 @@ def bot(op):
                     mentionees = mention['MENTIONEES']
                     for mention in mentionees:
                            if mention['M'] in Bots:
-                                  ka.sendText(msg.to,ret_)
-                                  ka.sendText(msg.to,balas1)
-                                  ka.sendImageWithURL(msg.to,image)
+                                  cl.sendText(msg.to,ret_)
+                                  cl.sendText(msg.to,balas1)
+                                  cl.sendImageWithURL(msg.to,image)
                                   msg.contentType = 7   
                                   msg.text = None
                                   msg.contentMetadata = {
                                                        "STKID": "163",
                                                        "STKPKGID": "2",
                                                        "STKVER": "100" }
-                                  ka.sendMessage(msg)                                
+                                  cl.sendMessage(msg)                                
                                   break 
 #==============================================================================#
         if op.type == 25:
             msg = op.message
             if wait["alwaysRead"] == True:
                 if msg.toType == 0:
-                    ka.sendChatChecked(msg.from_,msg.id)
+                    cl.sendChatChecked(msg.from_,msg.id)
                 else:
-                    ka.sendChatChecked(msg.to,msg.id)
+                    cl.sendChatChecked(msg.to,msg.id)
 #==============================================================================#
             elif msg.text == "Ginfo":
                 if msg.toType == 2:
-                    ginfo = ka.getGroup(msg.to)
+                    ginfo = cl.getGroup(msg.to)
                     try:
                         gCreator = ginfo.creator.displayName
                     except:
@@ -506,28 +500,28 @@ def bot(op):
                             u = "close"
                         else:
                             u = "open"
-                        ka.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus + "\nmembers:" + str(len(ginfo.members)) + "members\npending:" + sinvitee + "people\nURL:" + u + "it is inside")
+                        cl.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus + "\nmembers:" + str(len(ginfo.members)) + "members\npending:" + sinvitee + "people\nURL:" + u + "it is inside")
                     else:
-                        ka.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
+                        cl.sendText(msg.to,"[group name]\n" + str(ginfo.name) + "\n[gid]\n" + msg.to + "\n[group creator]\n" + gCreator + "\n[profile status]\nhttp://dl.profile.line.naver.jp/" + ginfo.pictureStatus)
                 else:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Can not be used outside the group")
+                        cl.sendText(msg.to,"Can not be used outside the group")
                     else:
-                        ka.sendText(msg.to,"Not for use less than group")                       
+                        cl.sendText(msg.to,"Not for use less than group")                       
 #==============================================================================#
 	    elif msg.text in ["Group creator","Gcreator","gcreator"]:
-		ginfo = ka.getGroup(msg.to)
+		ginfo = cl.getGroup(msg.to)
 		gCreator = ginfo.creator.mid
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': gCreator}
-                ka.sendMessage(msg)
-		ka.sendText(msg.to,"Itu Yang Buat Grup Ini")
+                cl.sendMessage(msg)
+		cl.sendText(msg.to,"Itu Yang Buat Grup Ini")
 #==============================================================================#
             if msg.contentType == 13:
                 if wait["steal"] == True:
                     _name = msg.contentMetadata["displayName"]
                     copy = msg.contentMetadata["mid"]
-                    groups = ka.getGroup(msg.to)
+                    groups = cl.getGroup(msg.to)
                     pending = groups.invitee
                     targets = []
                     for s in groups.members:
@@ -541,16 +535,16 @@ def bot(op):
                     else:
                         for target in targets:
                             try:
-                                ka.findAndAddContactsByMid(target)
-                                contact = ka.getContact(target)
-                                cu = ka.channel.getCover(target)
+                                cl.findAndAddContactsByMid(target)
+                                contact = cl.getContact(target)
+                                cu = cl.channel.getCover(target)
                                 path = str(cu)
                                 image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                                ka.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + msg.contentMetadata["mid"] + "\n\nBio :\n" + contact.statusMessage)
-                                ka.sendText(msg.to,"Profile Picture " + contact.displayName)
-                                ka.sendImageWithURL(msg.to,image)
-                                ka.sendText(msg.to,"Cover " + contact.displayName)
-                                ka.sendImageWithURL(msg.to,path)
+                                cl.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nMid :\n" + msg.contentMetadata["mid"] + "\n\nBio :\n" + contact.statusMessage)
+                                cl.sendText(msg.to,"Profile Picture " + contact.displayName)
+                                cl.sendImageWithURL(msg.to,image)
+                                cl.sendText(msg.to,"Cover " + contact.displayName)
+                                cl.sendImageWithURL(msg.to,path)
                                 wait["steal"] = False
                                 break
                             except:
@@ -560,7 +554,7 @@ def bot(op):
                 if wait["copy"] == True:
                     _name = msg.contentMetadata["displayName"]
                     copy = msg.contentMetadata["mid"]
-                    groups = ka.getGroup(msg.to)
+                    groups = cl.getGroup(msg.to)
                     targets = []
                     for s in groups.members:
                         if _name in s.displayName:
@@ -569,13 +563,13 @@ def bot(op):
                         else:
                             targets.append(copy)
                     if targets == []:
-                        ka.sendText(msg.to, "Not Found...")
+                        cl.sendText(msg.to, "Not Found...")
                         pass
                     else:
                         for target in targets:
                             try:
-                                ka.CloneContactProfile(target)
-                                ka.sendText(msg.to, "Copied (^_^)")
+                                cl.CloneContactProfile(target)
+                                cl.sendText(msg.to, "Copied (^_^)")
                                 wait['copy'] = False
                                 break
                             except:
@@ -585,25 +579,25 @@ def bot(op):
 #==============================================================================#
             elif wait["contact"] == True:
                      msg.contentType = 0
-                     ka.sendText(msg.to,msg.contentMetadata["mid"])
+                     cl.sendText(msg.to,msg.contentMetadata["mid"])
                      if 'displayName' in msg.contentMetadata:
-                         contact = ka.getContact(msg.contentMetadata["mid"])
+                         contact = cl.getContact(msg.contentMetadata["mid"])
                          try:
-                             cu = ka.channel.getCover(msg.contentMetadata["mid"])
+                             cu = cl.channel.getCover(msg.contentMetadata["mid"])
                          except:
                              cu = ""
-                         ka.sendText(msg.to,"[displayName]:\n" + msg.contentMetadata["displayName"] + "\n[mid]:\n" + msg.contentMetadata["mid"] + "\n[statusMessage]:\n" + contact.statusMessage + "\n[pictureStatus]:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n[coverURL]:\n" + str(cu))
+                         cl.sendText(msg.to,"[displayName]:\n" + msg.contentMetadata["displayName"] + "\n[mid]:\n" + msg.contentMetadata["mid"] + "\n[statusMessage]:\n" + contact.statusMessage + "\n[pictureStatus]:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n[coverURL]:\n" + str(cu))
                      else:
-                         contact = ka.getContact(msg.contentMetadata["mid"])
+                         contact = cl.getContact(msg.contentMetadata["mid"])
                          try:
-                             cu = ka.channel.getCover(msg.contentMetadata["mid"])
+                             cu = cl.channel.getCover(msg.contentMetadata["mid"])
                          except:
                              cu = ""
-                         ka.sendText(msg.to,"[displayName]:\n" + contact.displayName + "\n[mid]:\n" + msg.contentMetadata["mid"] + "\n[statusMessage]:\n" + contact.statusMessage + "\n[pictureStatus]:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n[coverURL]:\n" + str(cu))
+                         cl.sendText(msg.to,"[displayName]:\n" + contact.displayName + "\n[mid]:\n" + msg.contentMetadata["mid"] + "\n[statusMessage]:\n" + contact.statusMessage + "\n[pictureStatus]:\nhttp://dl.profile.line-cdn.net/" + contact.pictureStatus + "\n[coverURL]:\n" + str(cu))
 #==============================================================================#
             elif msg.text in ["Key","help","Help"]:
                 if wait["lang"] == "JP":
-                    ka.sendText(msg.to,helpMessage)
+                    cl.sendText(msg.to,helpMessage)
 #==============================================================================#
             elif msg.text in ["Gift"]:
                 msg.contentType = 9
@@ -611,7 +605,7 @@ def bot(op):
                                     'PRDTYPE': 'THEME',
                                     'MSGTPL': '5'}
                 msg.text = None
-                ka.sendMessage(msg)
+                cl.sendMessage(msg)
 #==============================================================================#         
             elif msg.text in ["Respon1 on"]:
 		if msg.from_ in admin:
@@ -619,16 +613,16 @@ def bot(op):
                     wait["detectMention2"] = False
                     wait["detectMention3"] = False
                     wait["kickMention"] = False
-                    ka.sendText(msg.to,"Berhasil Mengaktifkan Respon1")
+                    cl.sendText(msg.to,"Berhasil Mengaktifkan Respon1")
 		else:
-		    ka.sendText(msg.to,"khusus admin")
+		    cl.sendText(msg.to,"khusus admin")
 #==============================================================================#
             elif msg.text in ["Respon1 off"]:
 		if msg.from_ in admin:
                     wait["detectMention"] = False
-                    ka.sendText(msg.to,"Berhasil Menonaktifkan Respon1")
+                    cl.sendText(msg.to,"Berhasil Menonaktifkan Respon1")
 		else:
-		    ka.sendText(msg.to,"khusus admin")	
+		    cl.sendText(msg.to,"khusus admin")	
 #==============================================================================#
             elif msg.text in ["Respon2 on"]:
 		if msg.from_ in admin:
@@ -636,16 +630,16 @@ def bot(op):
                     wait["detectMention2"] = True
                     wait["detectMention3"] = False
                     wait["kickMention"] = False
-                    ka.sendText(msg.to,"Berhasil Mengaktifkan Respon2")
+                    cl.sendText(msg.to,"Berhasil Mengaktifkan Respon2")
 		else:
-		    ka.sendText(msg.to,"khusus admin")
+		    cl.sendText(msg.to,"khusus admin")
 #==============================================================================#
             elif msg.text in ["Respon2 off"]:
 		if msg.from_ in admin:
                     wait["detectMention2"] = False
-                    ka.sendText(msg.to,"Berhasil Menonaktifkan Respon2")
+                    cl.sendText(msg.to,"Berhasil Menonaktifkan Respon2")
 		else:
-		    ka.sendText(msg.to,"khusus admin")	    
+		    cl.sendText(msg.to,"khusus admin")	    
 #==============================================================================#
             elif msg.text in ["Respon3 on"]:
 		if msg.from_ in admin:
@@ -653,70 +647,70 @@ def bot(op):
                     wait["detectMention2"] = False
                     wait["detectMention3"] = True
                     wait["kickMention"] = False
-                    ka.sendText(msg.to,"Berhasil Mengaktifkan Respon3")
+                    cl.sendText(msg.to,"Berhasil Mengaktifkan Respon3")
 		else:
-		    ka.sendText(msg.to,"khusus admin")
+		    cl.sendText(msg.to,"khusus admin")
 #==============================================================================#
             elif msg.text in ["Respon3 off"]:
 		if msg.from_ in admin:
                     wait["detectMention3"] = False
-                    ka.sendText(msg.to,"Berhasil Menonaktifkan Respon3")
+                    cl.sendText(msg.to,"Berhasil Menonaktifkan Respon3")
 		else:
-		    ka.sendText(msg.to,"khusus admin")	
+		    cl.sendText(msg.to,"khusus admin")	
 #==============================================================================#
             elif msg.text in ["Contact on"]:
               if msg.from_ in admin:
                 if wait["contact"] == True:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Info Contact")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Info Contact")
                     else:
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Info Contact")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Info Contact")
                 else:
                     wait["contact"] = True
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Info Contact")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Info Contact")
                     else:
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Info Contact")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Info Contact")
 #==============================================================================#
             elif msg.text in ["Contact off"]:
               if msg.from_ in admin:
                 if wait["contact"] == False:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Info Contact")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Info Contact")
                     else:
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Info Contact")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Info Contact")
                 else:
                     wait["contact"] = False
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Info Contact")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Info Contact")
                     else:
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Info Contact")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Info Contact")
 #==============================================================================#
             elif msg.text in ["Alwaysread on"]:
                 wait["alwaysRead"] = True
-                ka.sendText(msg.to,"Berhasil Mengaktifkan Alwaysread")
+                cl.sendText(msg.to,"Berhasil Mengaktifkan Alwaysread")
 #==============================================================================#
             elif msg.text in ["Alwaysread off"]:
                 wait["alwaysRead"] = False
-                ka.sendText(msg.to,"Berhasil Menonaktifkan Alwaysread")                
+                cl.sendText(msg.to,"Berhasil Menonaktifkan Alwaysread")                
 #==============================================================================#
             elif msg.text in ["Sambutan on"]:
                 if wait["Sambutan"] == True:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Sambutan")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Sambutan")
                 else:
                     wait["Sambutan"] = True
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"On")
+                        cl.sendText(msg.to,"On")
 #==============================================================================#
             elif msg.text in ["Sambutan off"]:
                 if wait["Sambutan"] == False:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Sambutan")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Sambutan")
                 else:
                     wait["Sambutan"] = False
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Off")                       
+                        cl.sendText(msg.to,"Off")                       
 #==============================================================================#           
             elif "Sider ok" in msg.text:
                 try:
@@ -729,71 +723,71 @@ def bot(op):
                 cctv['sidermem'][msg.to] = ""
                 cctv['cyduk'][msg.to]=True
                 wait["Sider"] = True
-                ka.sendText(msg.to,"øκ.ακ†ιŦ")
+                cl.sendText(msg.to,"øκ.ακ†ιŦ")
 #==============================================================================#
             elif "Sider off" in msg.text:
                 if msg.to in cctv['point']:
                     cctv['cyduk'][msg.to]=False
                     wait["Sider"] = False
-                    ka.sendText(msg.to, "off")
+                    cl.sendText(msg.to, "Berhasil Menonaktifkan Cek Sider")
                 else:
-                    ka.sendText(msg.to, "Cek Sider Belum Aktif")                         
+                    cl.sendText(msg.to, "Cek Sider Belum Aktif")                         
 #==============================================================================#
             elif msg.text in ["Join on"]:
               if msg.from_ in admin:
                 if wait["autoJoin"] == True:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Join")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Join")
                     else:
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Join")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Join")
                 else:
                     wait["autoJoin"] = True
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Join")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Join")
                     else:
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Join")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Join")
 #==============================================================================#
             elif msg.text in ["Join off"]:
               if msg.from_ in admin:
                 if wait["autoJoin"] == False:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Join")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Join")
                     else:
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Join")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Join")
                 else:
                     wait["autoJoin"] = False
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Join")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Join")
                     else:
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Join")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Join")
 #==============================================================================#
             elif msg.text in ["Leave on"]:
               if msg.from_ in admin:
                 if wait["LeaveRoom"] == True:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Leave")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Leave")
                     else:
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Leave")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Leave")
                 else:
                     wait["LeaveRoom"] = True
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Leave")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Leave")
                     else:
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Leave")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Leave")
 #==============================================================================#
             elif msg.text in ["Leave off"]:
               if msg.from_ in admin:
                 if wait["LeaveRoom"] == False:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Leave")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Leave")
                     else:
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Leave")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Leave")
                 else:
                     wait["LeaveRoom"] = False
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Leave")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Leave")
                     else:
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Leave")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Leave")
 #==============================================================================#
             elif msg.text in ["Set"]:
               if msg.from_ in admin:
@@ -818,38 +812,38 @@ def bot(op):
                 else: md+=" Auto leave : off\n"
                 if wait["autoAdd"] == True: md+=" Auto add : on\n"
                 else:md+=" Auto add : off\n"
-                ka.sendText(msg.to,md)
+                cl.sendText(msg.to,md)
 #==============================================================================#
             elif msg.text in ["Autoadd on"]:
               if msg.from_ in admin:
                 if wait["autoAdd"] == True:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Add")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Add")
                     else:
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Add")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Add")
                 else:
                     wait["autoAdd"] = True
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Add")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Add")
                     else:
-                        ka.sendText(msg.to,"Berhasil Mengaktifkan Auto Add")
+                        cl.sendText(msg.to,"Berhasil Mengaktifkan Auto Add")
 #==============================================================================#
             elif msg.text in ["Autoadd off"]:
               if msg.from_ in admin:
                 if wait["autoAdd"] == False:
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Add")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Add")
                     else:
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Add")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Add")
                 else:
                     wait["autoAdd"] = False
                     if wait["lang"] == "JP":
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Add")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Add")
                     else:
-                        ka.sendText(msg.to,"Berhasil Menonaktifkan Auto Add")
+                        cl.sendText(msg.to,"Berhasil Menonaktifkan Auto Add")
 #==============================================================================#
             elif msg.text in ["Tag"]:
-                group = ka.getGroup(msg.to)
+                group = cl.getGroup(msg.to)
                 nama = [contact.mid for contact in group.members]
                 nm1, nm2, nm3, nm4, nm5, jml = [], [], [], [], [], len(nama)
                 if jml <= 100:
@@ -882,7 +876,7 @@ def bot(op):
                 cnt = Message()
                 cnt.text = "ʝʊʍʟǟɦ:\n" + str(jml) +  " мємвєяѕ"
                 cnt.to = msg.to
-                ka.sendMessage(cnt)
+                cl.sendMessage(cnt)
 #==============================================================================#
             elif '/ig ' in msg.text.lower():
                 try:
@@ -902,10 +896,10 @@ def bot(op):
                     link = "Link: " + "https://www.instagram.com/" + instagram
                     detail = "========INSTAGRAM INFO ========\n"
                     details = "\n========INSTAGRAM INFO ========"
-                    ka.sendText(msg.to, detail + user + user1 + followers + following + post + link + details)
-                    ka.sendImageWithURL(msg.to, tj)
+                    cl.sendText(msg.to, detail + user + user1 + followers + following + post + link + details)
+                    cl.sendImageWithURL(msg.to, tj)
                 except Exception as njer:
-                	ka.sendText(msg.to, str(njer))
+                	cl.sendText(msg.to, str(njer))
 #==============================================================================#
             elif '/lirik ' in msg.text.lower():
                 try:
@@ -919,9 +913,9 @@ def bot(op):
                         hasil += song[0]
                         hasil += ')\n\n'
                         hasil += song[5]
-                        ka.sendText(msg.to, hasil)
+                        cl.sendText(msg.to, hasil)
                 except Exception as wak:
-                        ka.sendText(msg.to, str(wak))
+                        cl.sendText(msg.to, str(wak))
 #==============================================================================#
             elif 'Y ' in msg.text:
                 try:
@@ -932,9 +926,9 @@ def bot(op):
                     html = response.read()
                     soup = BeautifulSoup(html, "html.parser")
                     results = soup.find(attrs={'class':'yt-uix-tile-link'})
-                    ka.sendText(msg.to,'https://www.youtube.com' + results['href'])
+                    cl.sendText(msg.to,'https://www.youtube.com' + results['href'])
                 except:
-                    ka.sendText(msg.to,"Could not find it")
+                    cl.sendText(msg.to,"Could not find it")
 #==============================================================================#
             elif 'Yv ' in msg.text:
                     try:
@@ -945,58 +939,58 @@ def bot(op):
                         html = response.read()
                         soup = BeautifulSoup(html, "html.parser")
                         results = soup.find(attrs={'class': 'yt-uix-tile-link'})
-                        ka.sendVideoWithURL(msg.to,'https://www.youtube.com' + results['href'])
+                        cl.sendVideoWithURL(msg.to,'https://www.youtube.com' + results['href'])
                     except:
-                        ka.sendText(msg.to, "Could not find it")                    
+                        cl.sendText(msg.to, "Could not find it")                    
 
 
             elif msg.text.lower() == 'runtime':
                 eltime = time.time() - mulai
                 van = "Bot Sudah Berjalan Selama :\n"+waktu(eltime)
-                ka.sendText(msg.to,van)
+                cl.sendText(msg.to,van)
 #==============================================================================#
             elif msg.text in ["@zhu"]:
               if msg.from_ in admin:
                 if msg.toType == 2:
-                    ginfo = ka.getGroup(msg.to)
+                    ginfo = cl.getGroup(msg.to)
                     try:
-                        ka.leaveGroup(msg.to)
+                        cl.leaveGroup(msg.to)
                     except:
                         pass
 #==============================================================================#
             elif msg.text in ["Bot restart"]:
               if msg.from_ in admin:
-    	          ka.sendText(msg.to, "Kami Siap Restart\nWaktu Restart Sekitar 10 Detik ")
+    	          cl.sendText(msg.to, "Kami Siap Restart\nWaktu Restart Sekitar 10 Detik ")
                   restart_program()
               else:
-                ka.sendText(msg.to,"This Command Only For Owner")
+                cl.sendText(msg.to,"This Command Only For Owner")
 #==============================================================================#
             elif "Mycopy @" in msg.text:
                    print "[COPY] Ok"
                    _name = msg.text.replace("Mycopy @","")
                    _nametarget = _name.rstrip('  ')
-                   gs = ka.getGroup(msg.to)
+                   gs = cl.getGroup(msg.to)
                    targets = []
                    for g in gs.members:
                        if _nametarget == g.displayName:
                            targets.append(g.mid)
                    if targets == []:
-                       ka.sendText(msg.to, "Not Found...")
+                       cl.sendText(msg.to, "Not Found...")
                    else:
                        for target in targets:
                             try:
-                               ka.CloneContactProfile(target)
-                               ka.sendText(msg.to, "Berhasil Copy Profile")
+                               cl.CloneContactProfile(target)
+                               cl.sendText(msg.to, "Berhasil Copy Profile")
                             except Exception as e:
                                 print e
 #==============================================================================#
             elif msg.text in ["Mybackup"]:
                 try:
-                    ka.updateDisplayPicture(backup1.pictureStatus)
-                    ka.updateProfile(backup1)
-                    ka.sendText(msg.to, "Berhasil Backup Profile")
+                    cl.updateDisplayPicture(backup1.pictureStatus)
+                    cl.updateProfile(backup1)
+                    cl.sendText(msg.to, "Berhasil Backup Profile")
                 except Exception as e:
-                    ka.sendText(msg.to, str(e))
+                    cl.sendText(msg.to, str(e))
 #==============================================================================#
             elif 'music ' in msg.text.lower():
                 try:
@@ -1010,60 +1004,64 @@ def bot(op):
                         hasil += 'Judul : ' + song[0]
                         hasil += '\nDurasi : ' + song[1]
                         hasil += '\nLink Download : ' + song[4]
-                        ka.sendText(msg.to, hasil)
-                        ka.sendText(msg.to, "Please Wait for audio...")
-                        ka.sendAudioWithURL(msg.to, song[3])
+                        cl.sendText(msg.to, hasil)
+                        cl.sendText(msg.to, "Please Wait for audio...")
+                        cl.sendAudioWithURL(msg.to, song[3])
 		except Exception as njer:
-		        ka.sendText(msg.to, str(njer))
+		        cl.sendText(msg.to, str(njer))
 #==============================================================================#
             elif msg.text in ["Sp","Speed","speed"]:
                 start = time.time()
-                ka.sendText(msg.to, "Progress...")
+                cl.sendText(msg.to, "Progress...")
                 elapsed_time = time.time() - start
-                ka.sendText(msg.to, "%sseconds" % (elapsed_time))
+                cl.sendText(msg.to, "%sseconds" % (elapsed_time))
 #==============================================================================#
             elif "Sayi " in msg.text:
                 say = msg.text.replace("Sayi ","")
                 lang = 'id'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")
 #==============================================================================#
             elif "Saye " in msg.text:
                 say = msg.text.replace("Saye ","")
                 lang = 'en'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")
             elif "Sayko " in msg.text:
                 say = msg.text.replace("Sayko ","")
                 lang = 'ko'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")    
+                cl.sendAudio(msg.to,"hasil.mp3")    
                 
             elif "Sayjpn " in msg.text:
                 say = msg.text.replace("Sayjpn ","")
                 lang = 'ja'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")    
+                cl.sendAudio(msg.to,"hasil.mp3")    
 #==============================================================================#
+            elif msg.text.lower() in ["ge"]:
+                beb = "Hadirr 😘 " ,cName + " 􀸂􀆇starry heart􏿿"
+                cl.sendText(msg.to,beb)
+
             elif "Say welcome" in msg.text:
-                gs = ka.getGroup(msg.to)
+                gs = cl.getGroup(msg.to)
                 say = msg.text.replace("Say welcome","Selamat Datang Di "+ gs.name)
                 lang = 'id'
                 tts = gTTS(text=say, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")
                 
                 
 #==============================================================================#
             elif "playstore " in msg.text.lower():
                 tob = msg.text.lower().replace("playstore ","")
-                ka.sendText(msg.to,"Sedang Mencari...")
-                ka.sendText(msg.to,"Title : "+tob+"\nSource : Google Play\nLink : https://play.google.com/store/search?q=" + tob)
-                ka.sendText(msg.to,"Link Aplikasi Sudah Terkirim")
+                cl.sendText(msg.to,"Sedang Mencari...")
+                cl.sendText(msg.to,"Title : "+tob+"\nSource : Google Play\nLink : https://play.google.com/store/search?q=" + tob)
+                cl.sendText(msg.to,"Link Aplikasi Sudah Terkirim")
 #==============================================================================#
             elif "/apakah " in msg.text:
                 apk = msg.text.replace("/apakah ","")
@@ -1072,7 +1070,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")
                 
             elif "warna " in msg.text:
                 apk = msg.text.replace("warna ","")
@@ -1081,7 +1079,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")    
+                cl.sendAudio(msg.to,"hasil.mp3")    
 #==============================================================================#
             elif "/hari " in msg.text:
                 apk = msg.text.replace("/hari ","")
@@ -1090,7 +1088,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")   
+                cl.sendAudio(msg.to,"hasil.mp3")   
 #==============================================================================#
             elif "/berapa " in msg.text:
                 apk = msg.text.replace("/berapa ","")
@@ -1099,7 +1097,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")
 #==============================================================================#      
             elif "/berapakah " in msg.text:
                 apk = msg.text.replace("/berapakah ","")
@@ -1108,7 +1106,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")                
+                cl.sendAudio(msg.to,"hasil.mp3")                
 #==============================================================================#
             elif "/kapan " in msg.text:
                 apk = msg.text.replace("/kapan ","")
@@ -1117,7 +1115,7 @@ def bot(op):
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
-                ka.sendAudio(msg.to,"hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")
  #==============================================================================#
             elif "Gambar " in msg.text:
                 search = msg.text.replace("Gambar ","")
@@ -1128,7 +1126,7 @@ def bot(op):
                 path = random.choice(items)
                 print path
                 try:
-                    ka.sendImageWithURL(msg.to,path)
+                    cl.sendImageWithURL(msg.to,path)
                 except:
                     pass
 #==============================================================================#
@@ -1138,7 +1136,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='id')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ka.sendText(msg.to, A)
+                cl.sendText(msg.to, A)
 #==============================================================================#
             elif "Jawa " in msg.text:
                 isi = msg.text.replace("Jawa ","")
@@ -1146,7 +1144,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='jw')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ka.sendText(msg.to, A)
+                cl.sendText(msg.to, A)
             
             elif "Sunda " in msg.text:
                 isi = msg.text.replace("Sunda ","")
@@ -1154,7 +1152,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='su')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ka.sendText(msg.to, A)        
+                cl.sendText(msg.to, A)        
 
             elif "Tr-en " in msg.text:
                 isi = msg.text.replace("Tr-en ","")
@@ -1162,7 +1160,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='en')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ka.sendText(msg.to, A)
+                cl.sendText(msg.to, A)
                 
             elif "Trjp " in msg.text:
                 isi = msg.text.replace("Trjp ","")
@@ -1170,7 +1168,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='ja')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ka.sendText(msg.to, A) 
+                cl.sendText(msg.to, A) 
             
             elif "Trjer " in msg.text:
                 isi = msg.text.replace("Trjer ","")
@@ -1178,7 +1176,7 @@ def bot(op):
                 hasil = translator.translate(isi, dest='de')
                 A = hasil.text
                 A = A.encode('utf-8')
-                ka.sendText(msg.to, A)         
+                cl.sendText(msg.to, A)         
 #==============================================================================#                        
             elif "Id@en" in msg.text:
                 bahasa_awal = 'id'
@@ -1191,7 +1189,7 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ka.sendText(msg.to,"----Dari Indonesia----\n" + "" + kata + "\n\n----Ke Inggris----\n" + "" + result)
+                cl.sendText(msg.to,"----Dari Indonesia----\n" + "" + kata + "\n\n----Ke Inggris----\n" + "" + result)
                 
             elif "Id@su" in msg.text:
                 bahasa_awal = 'id'
@@ -1204,7 +1202,7 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ka.sendText(msg.to,"----Dari Indonesia----\n" + "" + kata + "\n\n----Ke sunda----\n" + "" + result) 
+                cl.sendText(msg.to,"----Dari Indonesia----\n" + "" + kata + "\n\n----Ke sunda----\n" + "" + result) 
                 
             elif "Jw@su" in msg.text:
                 bahasa_awal = 'jw'
@@ -1217,7 +1215,7 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ka.sendText(msg.to,"----Dari jawa----\n" + "" + kata + "\n\n----Ke sunda----\n" + "" + result)  
+                cl.sendText(msg.to,"----Dari jawa----\n" + "" + kata + "\n\n----Ke sunda----\n" + "" + result)  
             elif "Su@jw" in msg.text:
                 bahasa_awal = 'su'
                 bahasa_tujuan = 'jw'
@@ -1229,7 +1227,7 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ka.sendText(msg.to,"----sunda----\n" + "" + kata + "\n\n----jawa----\n" + "" + result)       
+                cl.sendText(msg.to,"----sunda----\n" + "" + kata + "\n\n----jawa----\n" + "" + result)       
                 
 #==============================================================================#
             elif "En@id" in msg.text:
@@ -1243,7 +1241,7 @@ def bot(op):
                 page = urllib2.urlopen(request).read()
                 result = page[page.find(cari_hasil)+len(cari_hasil):]
                 result = result.split("<")[0]
-                ka.sendText(msg.to,"----Dari Inggris----\n" + "" + kata + "\n\n----Ke Indonesia----\n" + "" + result)
+                cl.sendText(msg.to,"----Dari Inggris----\n" + "" + kata + "\n\n----Ke Indonesia----\n" + "" + result)
 #==============================================================================#
             elif msg.text in ["Kalender","Time","Waktu"]:
                 timeNow = datetime.now()
@@ -1259,16 +1257,16 @@ def bot(op):
                 for k in range(0, len(bulan)):
                     if bln == str(k): bln = bulan[k-1]
                 rst = hasil + ", " + inihari.strftime('%d') + " - " + bln + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
-                ka.sendText(msg.to, rst)                
+                cl.sendText(msg.to, rst)                
 #==============================================================================#      
             elif "Searchid: " in msg.text:
                 userid = msg.text.replace("Searchid: ","")
-                contact = ka.findContactsByUserid(userid)
+                contact = cl.findContactsByUserid(userid)
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': contact.mid}
-                ka.sendMessage(msg)     
+                cl.sendMessage(msg)     
 #==============================================================================#
-            elif msg.text == "Lurking ok":
+            elif msg.text == "cctv ok":
                 tz = pytz.timezone("Asia/Jakarta")
                 timeNow = datetime.now(tz=tz)
                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
@@ -1294,7 +1292,7 @@ def bot(op):
                         read['ROM'][msg.to] = {}
                         with open('sider.json', 'w') as fp:
                             json.dump(read, fp, sort_keys=True, indent=4)
-                            ka.sendText(msg.to,"oke on")
+                            cl.sendText(msg.to," on")
                 else:
                     try:
                         del read['readPoint'][msg.to]
@@ -1308,9 +1306,9 @@ def bot(op):
                     read['ROM'][msg.to] = {}
                     with open('sider.json', 'w') as fp:
                         json.dump(read, fp, sort_keys=True, indent=4)
-                        ka.sendText(msg.to, "Set reading point:\n" + readTime)
+                        cl.sendText(msg.to, "Set reading point:\n" + readTime)
 #==============================================================================#
-            elif msg.text == "Lurking off":
+            elif msg.text == "cctv off":
                 tz = pytz.timezone("Asia/Jakarta")
                 timeNow = datetime.now(tz=tz)
                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
@@ -1324,7 +1322,7 @@ def bot(op):
                     if bln == str(k): bln = bulan[k-1]
                 readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
                 if msg.to not in read['readPoint']:
-                    ka.sendText(msg.to," off")
+                    cl.sendText(msg.to,"Lurking already off")
                 else:
                     try:
                             del read['readPoint'][msg.to]
@@ -1332,9 +1330,9 @@ def bot(op):
                             del read['readTime'][msg.to]
                     except:
                           pass
-                    ka.sendText(msg.to, "Delete reading point:\n" + readTime)
+                    cl.sendText(msg.to, "Delete reading point:\n" + readTime)
 #==============================================================================#
-            elif msg.text == "Lurking reset":
+            elif msg.text == "cctv reset":
                 tz = pytz.timezone("Asia/Jakarta")
                 timeNow = datetime.now(tz=tz)
                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
@@ -1355,11 +1353,11 @@ def bot(op):
                         read["ROM"][msg.to] = {}
                     except:
                         pass
-                    ka.sendText(msg.to, "Reset reading point:\n" + readTime)
+                    cl.sendText(msg.to, "Reset reading point:\n" + readTime)
                 else:
-                    ka.sendText(msg.to, "Lurking belum diaktifkan ngapain di reset?")
+                    cl.sendText(msg.to, "Lurking belum diaktifkan ngapain di reset?")
 #==============================================================================#          
-            elif msg.text == "Lurking":
+            elif msg.text == "cctv":
                     tz = pytz.timezone("Asia/Jakarta")
                     timeNow = datetime.now(tz=tz)
                     day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
@@ -1374,13 +1372,13 @@ def bot(op):
                     readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
                     if msg.to in read['readPoint']:
                         if read["ROM"][msg.to].items() == []:
-                             ka.sendText(msg.to, "Lurkers:\nNone")
+                             cl.sendText(msg.to, "Lurkers:\nNone")
                         else:
                             chiya = []
                             for rom in read["ROM"][msg.to].items():
                                 chiya.append(rom[1])
                                    
-                            cmem = ka.getContacts(chiya)
+                            cmem = cl.getContacts(chiya)
                             zx = ""
                             zxc = ""
                             zx2 = []
@@ -1399,12 +1397,12 @@ def bot(op):
                         lol ={'MENTION':str('{"MENTIONEES":'+json.dumps(zx2).replace(' ','')+'}')}
                         msg.contentMetadata = lol
                         try:
-                          ka.sendMessage(msg)
+                          cl.sendMessage(msg)
                         except Exception as error:
                               print error
                         pass
                     else:
-                        ka.sendText(msg.to, "Lurking has not been set.")
+                        cl.sendText(msg.to, "Lurking has not been set.")
 #==============================================================================#
         if op.type == 55:
             try:
@@ -1422,22 +1420,12 @@ def bot(op):
             except:
                 pass
 #------------------------
+#------------------------
         if op.type == 26:
             msg = op.message
-            if msg.text in ["PING","Ping","ping"]:
-                ka.sendText(msg.to,"PONG 􀨁􀄻double thumbs up􏿿􀜁􀅔Har Har􏿿")
-            if msg.text in ["Assalamualaikum","Asalamualaikum","Assallammuallaikum"]:
-                ka.sendText(msg.to,"Wa'alaikumsalam Wr Wb 👳")
-            if msg.text in ["Pagi","pagi","Selamat pagi","Selamat Pagi"]:
-                ka.sendText(msg.to,"ᴾᴬᴳᴵ ᴶᵁᴳᴬ  ")
-            if msg.text in ["Siang","siang","Selamat siang","Selamat Siang"]:
-                ka.sendText(msg.to,"ˢᴵᴬᴺᴳ ᴶᵁᴳᴬ ")
-            if msg.text in ["Malam","malam","Selamat malam","Selamat Malam"]:
-                ka.sendText(msg.to,"ᴹᴬᴸᴬᴹ ᴶᵁᴳᴬ  ")
-            if msg.text in ["Sore","sore","Selamat sore","Selamat Sore"]:
-                ka.sendText(msg.to,"ˢᴼᴿᴱ ᴶᵁᴳᴬ ")
-            if msg.text in ["bay","Bay","Bayu","mas bay"]:
-                ka.sendText(msg.to,"Hadir")
+            if msg.text in ["geff","Angel","angel"]:
+                cl.sendText(msg.to,"Hadir")
+
 #------------------------
         if op.type == 59:
             print op
@@ -1455,11 +1443,11 @@ def a2():
 #------------------------
 while True:
     try:
-        Ops = ka.fetchOps(ka.Poll.rev, 5)
+        Ops = cl.fetchOps(cl.Poll.rev, 5)
     except EOFError:
-        raise Exception("It might be wrong revision\n" + str(ka.Poll.rev))
+        raise Exception("It might be wrong revision\n" + str(cl.Poll.rev))
 
     for Op in Ops:
         if (Op.type != OpType.END_OF_OPERATION):
-            ka.Poll.rev = max(ka.Poll.rev, Op.revision)
+            cl.Poll.rev = max(cl.Poll.rev, Op.revision)
             bot(Op)
