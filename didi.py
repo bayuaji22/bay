@@ -9,7 +9,7 @@ from gtts import gTTS
 import time,random,sys,json,codecs,threading,glob,urllib,urllib2,urllib3,re,ast,os,subprocess,requests,tempfile,pytz
 
 cl = LINETCR.LINE()
-cl.login(token="Erz8mugvuZmbZJeASBM7.RNPnQdVDEHss6kJitzRcPW.r+anB3FwtOhVI8xdVMWbs4dPFONzzP6SRdoh/ful5so=")
+cl.login(token="ErAx7nzsuUPqhLYllEk6.kFfS3JKOe60qsmlErvCwnG.7eqD2OlzXBZH1rfaGkPzv9gkSrqXudaaRSBbQ1H4Pys=")
 cl.loginResult()
 
 print "login success"
@@ -68,7 +68,7 @@ helpMessage ="""
 KAC=[cl]
 mid = cl.getProfile().mid
 Bots=[mid]
-admin=["uae7a4da83bdd7a1492e8a8c84d9ac2a7"]
+admin=["u29f16cde392813ad1048c2de45571636"]
 
 contact = cl.getProfile()
 backup1 = cl.getProfile()
