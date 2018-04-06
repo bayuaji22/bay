@@ -45,15 +45,11 @@ print "Kr-Login Success\n"
 
 km = LINETCR.LINE()
 #km.login(qr=True)
-km.login(token='ErhSVpORMHvOZOTblSrd.oEIB/s3Rr9E51pit4yenRq.Wu34WCYPY55IQQEabT1AqihkyAdn20Mz4HBtZ4JHRkQ=')
+km.login(token='EruaWmCAzWdJ5X9SR5I9.jdMM7znrIo0gH2xOHuzpAq.LxEM4fE07dnx4a2wTiyYSLGWF9likDs4IL1hkUKCbHk=')
 km.loginResult()
 print "Km-Login Success\n\n=====[Sukses All Login]====="
 
-chat = LINETCR.LINE()
-#kr.login(qr=True)
-chat.login(token='EruaWmCAzWdJ5X9SR5I9.jdMM7znrIo0gH2xOHuzpAq.LxEM4fE07dnx4a2wTiyYSLGWF9likDs4IL1hkUKCbHk=')
-chat.loginResult()
-print "chat-Login Success\n"
+
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -311,8 +307,8 @@ Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 Dmid = kr.getProfile().mid
 Emid = km.getProfile().mid
-Fmid = chat.getProfile().mid
-Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid]
+
+Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid]
 Creator=["ud5c39db7ab34ca5fb15f99ffef31047f"]
 admin=["ud5c39db7ab34ca5fb15f99ffef31047f","u39e89bf92deb47d7b9d4f213e1810dad","udf6c3490f0e0f4205f088804076c03a0","u7347c230e0c899ad5b63ce75f572b106","u47db3b35d1ac026a418269e3e3a96209","ub423e2c77e72692a5db5d1647af9341c"]
 contact = cl.getProfile()
