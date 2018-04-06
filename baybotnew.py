@@ -302,9 +302,10 @@ Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 Dmid = kr.getProfile().mid
 Emid = km.getProfile().mid
+
 Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid]
-Creator=["ud5c39db7ab34ca5fb15f99ffef31047f","u39e89bf92deb47d7b9d4f213e1810dad"]
-admin=["ud5c39db7ab34ca5fb15f99ffef31047f","u39e89bf92deb47d7b9d4f213e1810dad","udf6c3490f0e0f4205f088804076c03a0"]
+Creator=["ud5c39db7ab34ca5fb15f99ffef31047f"]
+admin=["ud5c39db7ab34ca5fb15f99ffef31047f","u39e89bf92deb47d7b9d4f213e1810dad","udf6c3490f0e0f4205f088804076c03a0","u7347c230e0c899ad5b63ce75f572b106","u47db3b35d1ac026a418269e3e3a96209","ub423e2c77e72692a5db5d1647af9341c"]
 contact = cl.getProfile()
 backup1 = cl.getProfile()
 backup1.displayName = contact.displayName
@@ -363,11 +364,11 @@ wait = {
     'kickMention':False,      
     'timeline':True,
     "Timeline":True,
-    "comment1":"Kenapa Kak?",
+    "comment1":"Behahahaha",
     "comment2":"Wkwkwk ＼（○＾ω＾○）／",
     "comment3":"Lucu Banget!!! ヘ(^_^)ヘ",
     "comment4":"Nice Kak (^_^)",
-    "comment5":"Bot Auto Like ©By : zhu",    
+    "comment5":"TOPBGT",    
     "commentOn":True,
     "commentBlack":{},
     "message":"Thx For Add Me (^_^)\nInvite Me To Your Group ヘ(^_^)ヘ",    
@@ -390,7 +391,7 @@ wait = {
 settings = {
     "simiSimi":{}
     }
-    
+
 cctv = {
     "cyduk":{},
     "point":{},
@@ -422,7 +423,7 @@ def download_page(url):
             return respData
         except Exception as e:
             print(str(e))
-    else:                        
+    else: 
         import urllib2
         try:
             headers = {}
@@ -647,7 +648,6 @@ def bot(op):
                             Name = kk.getContact(op.param2).displayName
                             Name = kc.getContact(op.param2).displayName
                             Name = kr.getContact(op.param2).displayName
-                            Name = km.getContact(op.param2).displayName
                             if Name in cctv['sidermem'][op.param1]:
                                 pass
                             else:
@@ -655,12 +655,20 @@ def bot(op):
                                 if " " in Name:
                                     nick = Name.split(' ')
                                     if len(nick) == 2:
-                                        random.choice(KAC).sendText(op.param1, "Nahh " + "☞ " + nick[0] + " ☜" + "\nNgintip aja kk (-__-)   ")
+                                        cl.sendText(op.param1, "Hallo" + "☞ " + nick[0] + " ☜" + " ")
+                                        c = Message(to=op.param1, from_=None, text=None, contentType=13)
+                                        c.contentMetadata={'mid':op.param2}
+                                        cl.sendImageWithURL(op.param1,image)
                                     else:
-                                        random.choice(KAC).sendText(op.param1, "Haii " + "☞ " + nick[1] + " ☜" + "\nNyimak aja kk. .\nChat sini lah(-__-)   ")
+                                        cl.sendText(op.param1, "Haii " + "☞ " + nick[1] + " ☜" + "")
+                                        c = Message(to=op.param1, from_=None, text=None, contentType=13)
+                                        c.contentMetadata={'mid':op.param2}
+                                        cl.sendImageWithURL(op.param1,image)
                                 else:
-                                    random.choice(KAC).sendText(op.param1, "Nah " + "☞ " + Name + " ☜" + "\nSini Gabung Chat...   ")
-                        else:
+                                    cl.sendText(op.param1, "Nah " + "☞ " + Name + " ☜" + "")
+                                    c = Message(to=op.param1, from_=None, text=None, contentType=13)
+                                    c.contentMetadata={'mid':op.param2}
+                                    cl.sendImageWithURL(op.param1,image)
                             pass
                     else:
                         pass
@@ -1100,8 +1108,8 @@ def bot(op):
             image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
             c = Message(to=op.param1, from_=None, text=None, contentType=13)
             c.contentMetadata={'mid':op.param2}
-            cl.sendMessage(c)
-            kc.sendText(op.param1,"Hallo " + cl.getContact(op.param2).displayName + "\nWelcome To ☞ " + str(ginfo.name) + " ☜" + "\nBudayakan Cek Note\n Semoga Betah Disini ^_^")
+            kk.sendMessage(c)
+            kc.sendText(op.param1,"Hay " + cl.getContact(op.param2).displayName + "\nWelcome To ☞ " + str(ginfo.name) + " ☜" + "\nBudayakan Cek Note ya \n Semoga Betah ^_^")
             kr.sendImageWithURL(op.param1,image)
             print "MEMBER JOIN TO GROUP"
             
@@ -1118,7 +1126,7 @@ def bot(op):
           if wait["Sambutan"] == True:
             if op.param2 in admin:
                 return
-            cl.sendText(op.param1,"Good Bye " + cl.getContact(op.param2).displayName +  "\nSee You Next Time . . . (p′︵‵。) 🤗")
+            ki.sendText(op.param1,"Good Bye " + cl.getContact(op.param2).displayName +  "\nSee You Next Time . . . (p′︵‵。) 🤗")
             random.choice(KAC).inviteIntoGroup(op.param1,[op.param2])
             print "MEMBER HAS LEFT THE GROUP"
 
@@ -1177,8 +1185,25 @@ def bot(op):
 
         if op.type == 26:
             msg = op.message
-
-
+            if msg.text in ["Asem","asem","asyem"]:
+                cl.sendText(msg.to,"Kecuttt")
+            if msg.text in ["mbuh","Mbuh","Mboh","Ben","ben"]:
+                cl.sendText(msg.to,"Yekk Ngamukan...")
+            if msg.text in ["Anune","anune"]:
+                cl.sendText(msg.to,"anune geneo ")
+            if msg.text in ["Sue","sue"]:
+                cl.sendText(msg.to,"Sue Ora Jamu ")
+            if msg.text in ["Ben","ben"]:
+                cl.sendText(msg.to,"Anumu kejepit amben ") 
+            if msg.text in ["Bodo","bodo"]:
+                cl.sendText(msg.to,"Amatnya kemana? ")
+            if msg.text in ["Di Hongkong","Di Taiwan"]:
+                cl.sendText(msg.to,"Wah...jauh amat... ")      
+            if msg.text in ["Iya","iya"]:
+                cl.sendText(msg.to,"kek gak ikhlas ngmg iyanya... ")
+                
+            if msg.text in ["Lemot","lemot"]:
+                cl.sendText(msg.to,"Ya sabar lah...orang sabar disayang tuhan,yekan ")      
 
             if wait["alwaysRead"] == True:
                 if msg.toType == 0:
@@ -1487,7 +1512,7 @@ def bot(op):
                     else:
                         for target in targets:
                             try:
-                                cl.sendText(msg.to,"Gift Sudah Terkirim!")
+                                cl.sendText(msg.to,"Hadiah wes dikirim!")
                                 msg.contentType = 9
                                 msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -1649,7 +1674,7 @@ def bot(op):
                     for i in gid:
                         h = cl.getGroup(i).name
 		        if h == ng:
-			    cl.sendText(i,"Bot Di Paksa Keluar Oleh Owner!")
+			    cl.sendText(i,"Papay...kami Di Paksa Keluar!")
 		            cl.leaveGroup(i)
 			    ki.leaveGroup(i)
 			    kk.leaveGroup(i)
@@ -1665,13 +1690,13 @@ def bot(op):
 		gid = cl.getGroupIdsJoined()
                 if msg.from_ in Creator:
 		    for i in gid:
-			cl.sendText(i,"Bot Di Paksa Keluar Oleh Owner!")
+			cl.sendText(i,"Papay...kami Di Paksa Keluar!")
 		        cl.leaveGroup(i)
 			ki.leaveGroup(i)
 			kk.leaveGroup(i)
 			kc.leaveGroup(i)
 			kr.leaveGroup(i)
-		    cl.sendText(msg.to,"Success Leave All Group")
+		    cl.sendText(msg.to,"Success")
 		else:
 		    cl.sendText(msg.to,"Khusus zhu")
 		   
@@ -1890,7 +1915,7 @@ def bot(op):
 #		    cl.sendText(msg.to,"Khusus zhu")	     
 
             elif msg.text in ["Allprotect on"]:
-#		if msg.from_ in admin:
+		if msg.from_ in admin:
                     wait["AutoCancel"][msg.to] = True
                     wait["AutoCancelon"] = True
                     wait["inviteprotect"] = True 
@@ -1900,7 +1925,7 @@ def bot(op):
                     wait["Qr"][msg.to] = True
                     wait["Qron"] = True
                     wait["Ghost"] = True     
-                    cl.sendText(msg.to,"All Protect Sudah Aktif Semua")
+                    cl.sendText(msg.to,"All Protect Aktif Semua")
 		    print wait["AutoCancel"]
 		    print wait["AutoKick"]
 		    print wait["Qr"]
@@ -1976,13 +2001,13 @@ def bot(op):
                 cctv['sidermem'][msg.to] = ""
                 cctv['cyduk'][msg.to]=True
                 wait["Sider"] = True
-                cl.sendText(msg.to,"Siap Cek Sider")
+                cl.sendText(msg.to,"􀨁􀇗mata􏿿")
                 
-            elif "Sider off" in msg.text:
+            elif "Cctv off" in msg.text:
                 if msg.to in cctv['point']:
                     cctv['cyduk'][msg.to]=False
                     wait["Sider"] = False
-                    cl.sendText(msg.to, "Cek Sider Off")
+                    cl.sendText(msg.to, " Off")
                 else:
                     cl.sendText(msg.to, "Heh Belom Di Set")                         
 
@@ -2009,7 +2034,7 @@ def bot(op):
 		else:md+="╠➩❌ Qr Protect : Off\n"
 		if wait["AutoKickon"] == True: md+="╠➩✔️ Auto Kick : On\n"
 		else:md+="╠➩❌ Auto Kick : Off\n"
-		if wait["Ghost"] == True: md+="╠�����������✔️ Ghost : On\n"
+		if wait["Ghost"] == True: md+="╠�������������✔️ Ghost : On\n"
 		else:md+="╠➩❌ Ghost : Off\n"
 		if wait["alwaysRead"] == True: md+="╠➩✔️ Always Read : On\n"
 		else:md+="╠➩❌ Always Read: Off\n"
@@ -2085,7 +2110,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2115,7 +2140,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2145,7 +2170,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2175,7 +2200,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2205,7 +2230,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2235,7 +2260,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2265,7 +2290,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2295,7 +2320,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2325,7 +2350,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2355,7 +2380,7 @@ def bot(op):
                        else:
                            for target in targets:
                                 try:
-                                    kr.sendText(msg.to,_name + " Check Your Gift")
+                                    kr.sendText(msg.to,_name + " cek Hadiahmu")
                                     msg.contentType = 9
                                     msg.contentMetadata= {'PRDTYPE': 'STICKER',
                                                          'STKVER': '1',
@@ -2531,7 +2556,7 @@ def bot(op):
         
 
 
-            elif msg.text in ["Tagall","Tag all"]:
+            elif msg.text in ["Tagall","Tag all","tegal","Tegal","Tegall","tegall"]:
                   group = cl.getGroup(msg.to)
                   nama = [contact.mid for contact in group.members]
 
@@ -2561,7 +2586,7 @@ def bot(op):
 
             elif msg.text in ["Setview","Setpoint","Cctv"]:
                 subprocess.Popen("echo '' > dataSeen/"+msg.to+".txt", shell=True, stdout=subprocess.PIPE)
-                cl.sendText(msg.to, "☆Checkpoin☆")
+                cl.sendText(msg.to, "􁄁􀄍cctv􏿿")
                 print "Setview"
 
             elif msg.text in ["Viewseen","Check","Ciduk","Cyduk"]:
@@ -2592,14 +2617,14 @@ def bot(op):
                         dataResult.append(contactId[v].displayName + ' ('+timeSeen[v]+')')
                         pass
                     if len(dataResult) > 0:
-                        tukang = "╔═════════════════════════\n║         ☆☞ LIST VIEWERS ☜☆\n╠═════════════════════════\n╠➩"
+                        tukang = "╔═════════════════════════\n║         ☆☞ Daftar CCTV☜☆\n╠═════════════════════════\n╠➩"
                         grp = '\n╠➩ '.join(str(f) for f in dataResult)
                         total = '\n╠═════════════════════════\n╠➩ Total %i Viewers (%s)' % (len(dataResult), datetime.now().strftime('%H:%M:%S')) + "\n╚═════════════════════════"
                         cl.sendText(msg.to, "%s %s %s" % (tukang, grp, total))
                         subprocess.Popen("echo '' > dataSeen/"+msg.to+".txt", shell=True, stdout=subprocess.PIPE)
                         cl.sendText(msg.to, "☆Auto Checkpoint☆")                        
                     else:
-                        cl.sendText(msg.to, "☆Belum Ada Viewers☆")
+                        cl.sendText(msg.to, "☆Durung Ono CCTV☆")
                     print "Viewseen"
 
 
@@ -2633,9 +2658,9 @@ def bot(op):
                 
                 
 
-            elif msg.text in ["Auto like"]:
+            elif msg.text in ["Like"]:
                 wait["likeOn"] = True
-                cl.sendText(msg.to,"Shere Post Kamu Yang Mau Di Like!")                
+                cl.sendText(msg.to,"Sini Shere Postmu biar ku Like!")                
 
 
             elif msg.text in ["Steal contact"]:
@@ -2688,13 +2713,13 @@ def bot(op):
 
             elif msg.text in ["Welcome","welcome","Welkam","welkam","Wc","wc"]:
                 gs = cl.getGroup(msg.to)
-                cl.sendText(msg.to,"Selamat Datang Di "+ gs.name)
+                kk.sendText(msg.to,"Selamat Datang Di "+ gs.name)
                 msg.contentType = 7
                 msg.contentMetadata={'STKID': '247',
                                     'STKPKGID': '3',
                                     'STKVER': '100'}
                 msg.text = None
-                cl.sendMessage(msg)
+                kk.sendMessage(msg)
                 
                 
                   
@@ -2704,10 +2729,12 @@ def bot(op):
 		gid = cl.getGroupIdsJoined()
 		if msg.from_ in Creator:
 		    for i in gid:
-			cl.sendText(i,"=======[BROADCAST]=======\n\n"+bc+"\n\nContact Me : ")
+			cl.sendText(i,""+bc+"")
 		    cl.sendText(msg.to,"Success BC BosQ")
 		else:
 		    cl.sendText(msg.to,"Khusus Admin")
+		    
+	
 
             elif msg.text in ["Cancel"]:
                 gid = cl.getGroupIdsInvited()
@@ -2747,7 +2774,7 @@ def bot(op):
                     else:
                         cl.sendText(msg.to,"Not for use less than group")
 
-            elif msg.text in ["masuk2","Join all2"]:
+            elif msg.text in ["masuk","Join all"]:
 		if msg.from_ in admin:
 		    G = cl.getGroup(msg.to)
                     ginfo = cl.getGroup(msg.to)
@@ -2850,30 +2877,39 @@ def bot(op):
 		except Exception as E:
 		    print E
 
-            elif msg.text in ["Bye all2"]:
+            elif msg.text in ["Minggat bot"]:
               if wait["Leave"] == True:		    
                     ki.leaveGroup(msg.to)
                     kk.leaveGroup(msg.to)
                     kc.leaveGroup(msg.to)
                     kr.leaveGroup(msg.to)
               else:
-		          cl.sendText(msg.to,"Leavenya Belum On")                    
+		          cl.sendText(msg.to,"Leave urung On")                    
 
-            elif msg.text in ["@bye2","@Bye2"]:
+            elif msg.text in ["@bye","@Bye","@minggat"]:
               if wait["Leave"] == True:	
 		    cl.leaveGroup(msg.to)
 		    wait["Leave"] = False
               else:
-		          cl.sendText(msg.to,"Bilang Dulu Sama Admin Ku")		    
+		          cl.sendText(msg.to,"Ngomong dulu Admin Ku")		    
 		    
 
             elif msg.text in ["Absen"]:
-		cl.sendText(msg.to,"Pasukan Absen!!")
-                ki.sendText(msg.to," Hadiir  \(ˆ▿ˆ)/")
-                kk.sendText(msg.to," Hadiir  \(ˆ▿ˆ)/")
-                kc.sendText(msg.to," Hadiir  \(ˆ▿ˆ)/")
-                kr.sendText(msg.to," Hadiir  \(ˆ▿ˆ)/")
-                cl.sendText(msg.to,"Semua Hadirr Kapten...")
+		cl.sendText(msg.to,"Absen Grak!!")
+                ki.sendText(msg.to," Paimin Hadiir  \(ˆ▿ˆ)/")
+                kk.sendText(msg.to," Prapto Hadiir  \(ˆ▿ˆ)/")
+                kc.sendText(msg.to," Parji Hadiir  \(ˆ▿ˆ)/")
+                kr.sendText(msg.to," Mbok Sundari Hadiir  \(ˆ▿ˆ)/")
+                cl.sendText(msg.to,"Semua Hadirr grakk...!")
+
+            elif "Tagme: " in msg.text:
+                c = msg.text.replace("Tagme: ","")
+                if c in [""," ","\n",None]:
+                    acil.sendText(msg.to,"Is a string that can not be changed✔")
+                else:
+                    wait["tagme"] = c
+                    acil.sendText(msg.to,"✨This has been changed✨\n\n" + c)
+            
 
             elif msg.text.lower() in ["respon"]:
                 cl.sendText(msg.to,responsename)
@@ -3013,10 +3049,7 @@ def bot(op):
                     wait["blacklist"] = {}
                     cl.sendText(msg.to,"ヽ( ^ω^)ﾉ└ ❉Unbanned All Success❉ ┐") 
 
-            elif msg.text.lower() in ["bot","Cbay"]:
-                cl.sendText(msg.to,"Apa Manggil~Manggil Aku!?") 
-                cl.sendText(msg.to,"☆Ketik ☞Help☜ Untuk Bantuan☆") 
-
+            
  
             elif msg.text in ["Kill ban"]:
 		if msg.from_ in admin:
@@ -3044,8 +3077,8 @@ def bot(op):
                         for tag in wait["blacklist"]:
                             matched_list+=filter(lambda str: str == tag, gMembMids)
                         if matched_list == []:
-                            kk.sendText(msg.to,"Fuck You")
-                            kc.sendText(msg.to,"Fuck You")
+                            kk.sendText(msg.to,"...")
+                            kc.sendText(msg.to,"...")
                             return
                         for jj in matched_list:
                             try:
@@ -3104,15 +3137,15 @@ def bot(op):
 
 
             elif 'Crash' in msg.text:
-              if msg.from_ in Creator:
+#              if msg.from_ in Creator:
                 msg.contentType = 13
                 msg.contentMetadata = {'mid': "zhu,'"}
                 cl.sendMessage(msg)
 
  
-            elif "Kapten copy @" in msg.text:
+            elif "Mbok copy @" in msg.text:
                    print "[COPY] Ok"
-                   _name = msg.text.replace("Kapten copy @","")
+                   _name = msg.text.replace("Mbok copy @","")
                    _nametarget = _name.rstrip('  ')
                    gs = cl.getGroup(msg.to)
                    targets = []
@@ -3230,24 +3263,29 @@ def bot(op):
 
 
  
-	    elif "mp3 " in msg.text:
-					songname = msg.text.replace("mp3 ","")
-					params = {"songname": songname}
-					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-					data = r.text
-					data = json.loads(data)
-					for song in data:
-						abc = song[3].replace('https://','http://')
-						cl.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4])
-						cl.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar ^_^ ")
-						cl.sendAudioWithURL(msg.to,abc)
-						cl.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
+	    elif 'music ' in msg.text.lower():
+                try:
+                    songname = msg.text.lower().replace('music ','')
+                    params = {'songname': songname}
+                    r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                    data = r.text
+                    data = json.loads(data)
+                    for song in data:
+                        hasil = 'This is Your Music\n'
+                        hasil += 'Judul : ' + song[0]
+                        hasil += '\nDurasi : ' + song[1]
+                        hasil += '\nLink Download : ' + song[4]
+                        cl.sendText(msg.to, hasil)
+                        cl.sendText(msg.to, "Please Wait for audio...")
+                        cl.sendAudioWithURL(msg.to, song[4])
+		except Exception as njer:
+		        cl.sendText(msg.to, str(njer))
 	
             elif '/lirik ' in msg.text.lower():
                 try:
                     songname = msg.text.lower().replace('/lirik ','')
                     params = {'songname': songname}
-                    r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                    r = requests.get('http://api.secold.com/joox/cari/' + urllib.urlencode(params))
                     data = r.text
                     data = json.loads(data)
                     for song in data:
@@ -3262,7 +3300,7 @@ def bot(op):
 	    elif "/musrik " in msg.text:
 					songname = msg.text.replace("/musrik ","")
 					params = {"songname": songname}
-					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+					r = requests.get('http://api.ntcorp.us/joox/search?' + urllib.urlencode(params))
 					data = r.text
 					data = json.loads(data)
 					for song in data:
@@ -3522,21 +3560,106 @@ def bot(op):
                 
 
             elif msg.text.lower() in ["hi","hai","halo","hallo"]:
-                    beb = "Hi Sayang 😘 " +km.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
-                    km.sendText(msg.to,beb)
+                    beb = "Hi Sayang 😘 " +cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                    kr.sendText(msg.to,beb)
                     
             elif msg.text.lower() in ["siang","Siang"]:
                     beb = "siang 😘 " +cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
                     kr.sendText(msg.to,beb)        
 
+            elif msg.text.lower() in ["pagi","Pagi"]:
+                                beb = "PAgi 😘 " +cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                                cl.sendText(msg.to,beb)
+                                
+            elif msg.text.lower() in ["sore","Sore"]:
+                                beb = "Sore 😘 " +cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                                kc.sendText(msg.to,beb)        
+                                
+            elif msg.text.lower() in ["malam","Malam"]:
+                                beb = "Malam 😘 " +cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                                cl.sendText(msg.to,beb)                    
 
-
+            elif msg.text.lower() in ["bot","Bot","Mbok","mbok"]:
+                            beb = "Hadirr 😘 " +cl.getContact(msg.from_).displayName + " 􀸂􀆇starry heart􏿿"
+                            cl.sendText(msg.to,beb)
+                           
+                           
+            
+            elif msg.text.lower() in ["Assalamualaikum","assalamualaikum"]:
+                                beb = "Wa'alaikumsalam.wr.wb  " +cl.getContact(msg.from_).displayName + "😊😊"
+                                kr.sendText(msg.to,beb)
+            elif msg.text.lower() in ["Salken","salken","Salam kenal","salam kenal"]:
+                                beb = "Salam Kenal  " +cl.getContact(msg.from_).displayName + "😊namaku sri😊"
+                                cl.sendText(msg.to,beb)
+                                beb = "Salken  " +cl.getContact(msg.from_).displayName + "😊aku paimin😊"
+                                ki.sendText(msg.to,beb)  
+                                beb = "Salken  " +cl.getContact(msg.from_).displayName + "😊aku prapto😊"
+                                kk.sendText(msg.to,beb)
+                                beb = "Salken  " +cl.getContact(msg.from_).displayName + "😊saya parji😊"
+                                kc.sendText(msg.to,beb)
+                                beb = "Salam Kenal  " +cl.getContact(msg.from_).displayName + "😊aku sundari😊"
+                                kr.sendText(msg.to,beb)                    
+                                
+            elif msg.text.lower() in ["Pie?","pie?","Piye?","piye?","Pie","pie","Piye","piye"]:
+                                beb = "Apane " +cl.getContact(msg.from_).displayName + " ????"
+                                cl.sendText(msg.to,beb)
+            
+            elif msg.text.lower() in ["anu","Anu"]:
+                                beb = "Anune geneoo " +cl.getContact(msg.from_).displayName + " ????"
+                                cl.sendText(msg.to,beb)
+                                
+            elif msg.text.lower() in ["Apa kabar","apakabar","apa kabar","Apakabar"]:
+                                beb = "Saya baik " +cl.getContact(msg.from_).displayName + " "
+                                cl.sendText(msg.to,beb)                    
+                                
             elif "playstore " in msg.text.lower():
                 tob = msg.text.lower().replace("playstore ","")
                 cl.sendText(msg.to,"Sedang Mencari...")
                 cl.sendText(msg.to,"Title : "+tob+"\nSource : Google Play\nLink : https://play.google.com/store/search?q=" + tob)
                 cl.sendText(msg.to,"Tuh Linknya Kak (^_^)")
 
+            elif "Smule " in msg.text:
+                a = msg.text.replace("Smule ","")
+                b = urllib.quote(a)
+                kr.sendText(msg.to,"goleki id smule...")
+                kr.sendText(msg.to, "Ketemu..\nJenenge : "+b+"\nId smule: http://smule.com/" +b)
+                
+            elif "Wikipedia " in msg.text:
+                  try:
+                      wiki = msg.text.lower().replace("Wikipedia ","")
+                      wikipedia.set_lang("id")
+                      pesan="Title ("
+                      pesan+=wikipedia.page(wiki).title
+                      pesan+=")\n\n"
+                      pesan+=wikipedia.summary(wiki, sentences=1)
+                      pesan+="\n"
+                      pesan+=wikipedia.page(wiki).url
+                      cl.sendText(msg.to, pesan)
+                  except:
+                          try:
+                              pesan="Over Text Limit! Please Click link\n"
+                              pesan+=wikipedia.page(wiki).url
+                              cl.sendText(msg.to, pesan)
+                          except Exception as e:
+                              cl.sendText(msg.to, str(e))    
+                
+                
+            elif "Youinfo" in msg.text:
+                key = eval(msg.contentMetadata["MENTION"])
+                key1 = key["MENTIONEES"][0]["M"]
+                contact = cl.getContact(key1)
+                cu = cl.channel.getCover(key1)
+                path = str(cu)
+                image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
+                try:
+                    cl.sendText(msg.to,"Nama :\n" + contact.displayName + "\n\nBio :\n" + contact.statusMessage)
+                    cl.sendText(msg.to,"Profile Picture " + contact.displayName)
+                    cl.sendImageWithURL(msg.to,image)
+                    cl.sendText(msg.to,"Cover " + contact.displayName)
+                    cl.sendImageWithURL(msg.to,path)
+                except:
+                    pass
+                
 
             elif "Mid @" in msg.text:
                 _name = msg.text.replace("Mid @","")
@@ -3561,45 +3684,45 @@ def bot(op):
                         kr.updateProfile(profile)
                         cl.sendText(msg.to,"All Done")
 
-            elif "/cnkapten" in msg.text:
+            elif "Cnmbok " in msg.text:
 		if msg.from_ in Creator:
-                    string = msg.text.replace("/cnkapten"," Kapten")
+                    string = msg.text.replace("Cnmbok ","")
                     if len(string.decode('utf-8')) <= 5000:
                         profile = cl.getProfile()
                         profile.displayName = string
                         cl.updateProfile(profile)
                         cl.sendText(msg.to,"Done")
 
-            elif "/cnbot1" in msg.text:
+            elif "Cnbot1 " in msg.text:
 		if msg.from_ in Creator:
-                    string = msg.text.replace("/cnbot1","bot1")
+                    string = msg.text.replace("Cnbot1 ","")
                     if len(string.decode('utf-8')) <= 5000:
                         profile = ki.getProfile()
                         profile.displayName = string
                         ki.updateProfile(profile)
                         ki.sendText(msg.to,"Done")
 
-            elif "/cnbot2" in msg.text:
+            elif "Cnbot2 " in msg.text:
 		if msg.from_ in Creator:
-                    string = msg.text.replace("/cnbot2","bot2")
+                    string = msg.text.replace("Cnbot2 ","")
                     if len(string.decode('utf-8')) <= 5000:
                         profile = kk.getProfile()
                         profile.displayName = string
                         kk.updateProfile(profile)
                         kk.sendText(msg.to,"Done")
 
-            elif "/cnbot3" in msg.text:
+            elif "Cnbot3 " in msg.text:
 		if msg.from_ in Creator:
-                    string = msg.text.replace("/cnbot3","bot3")
+                    string = msg.text.replace("Cnbot3 ","")
                     if len(string.decode('utf-8')) <= 5000:
                         profile = kc.getProfile()
                         profile.displayName = string
                         kc.updateProfile(profile)
                         kc.sendText(msg.to,"Done")
 
-            elif "/cnbot4" in msg.text:
+            elif "Cnbot4 " in msg.text:
 		if msg.from_ in Creator:
-                    string = msg.text.replace("/cnbot4","bot4")
+                    string = msg.text.replace("Cnbot4 ","")
                     if len(string.decode('utf-8')) <= 5000:
                         profile = cl.getProfile()
                         profile.displayName = string
@@ -3608,7 +3731,7 @@ def bot(op):
 
 
             elif "Ulti " in msg.text:
-              if msg.from_ in Creator:
+             if msg.from_ in Creator:
                 ulti0 = msg.text.replace("Ulti ","")
                 ulti1 = ulti0.rstrip()
                 ulti2 = ulti1.replace("@","")
@@ -3871,38 +3994,42 @@ def bot(op):
 
             
 
-            elif msg.text in ["Spam"]:
+            elif msg.text in ["Spam","spam","SPAM"]:
 #              if msg.from_ in admin:
-                cl.sendText(msg.to,"Aku belum mandi")
+                beb = "" +cl.getContact(msg.from_).displayName +   " belum mandi"
+                cl.sendText(msg.to,beb)
                 ki.sendText(msg.to,"Tak tun tuang")
                 kk.sendText(msg.to,"Tak tun tuang")
-                cl.sendText(msg.to,"Tapi masih cantik juga")
+                kr.sendText(msg.to,"Tapi masih cakep juga")
                 ki.sendText(msg.to,"Tak tun tuang")
                 kk.sendText(msg.to,"Tak tun tuang")
                 cl.sendText(msg.to,"apalagi kalau sudah mandi")
                 ki.sendText(msg.to,"Tak tun tuang")
-                kk.sendText(msg.to,"Pasti cantik sekali")
+                kr.sendText(msg.to,"Pastinya cakep sekali")
                 cl.sendText(msg.to,"yiha")
-                ki.sendText(msg.to,"Kalau orang lain melihatku")
+                kr.sendText(msg.to,"Kalau orang lain melihatnya")
                 kk.sendText(msg.to,"Tak tun tuang")
-                cl.sendText(msg.to,"Badak aku taba bana")
+                ki.sendText(msg.to,"Tak tuntuang")
+                cl.sendText(msg.to,"Badaknya taba bana")
                 ki.sendText(msg.to,"Tak tun tuang")
                 kk.sendText(msg.to,"Tak tuntuang")
-                cl.sendText(msg.to,"Tapi kalau langsuang diidu")
+                kr.sendText(msg.to,"Tapi kalau langsuang diidu")
                 ki.sendText(msg.to,"Tak tun tuang")
-                kk.sendText(msg.to,"Atagfirullah baunya")
+                kk.sendText(msg.to,"Astagfirullah baunya")
                 cl.sendText(msg.to,"Males lanjutin ah")
-                ki.sendText(msg.to,"Sepi bat")
+                kr.sendText(msg.to,"Sepi bat")
                 kk.sendText(msg.to,"Iya sepi udah udah")
-                cl.sendText(msg.to,"Gaada yang denger juga kita nyanyi")
+                beb = "Cuma si " +cl.getContact(msg.from_).displayName +   " yang denger kita nyanyi"
+                cl.sendText(msg.to,beb)
                 ki.sendText(msg.to,"Nah")
                 kk.sendText(msg.to,"Mending gua makan dulu")
                 cl.sendText(msg.to,"Siyap")
                 ki.sendText(msg.to,"Okeh")
-                kk.sendText(msg.to,"Katanya owner kita Jomblo ya")
+                beb = "Katanya si " +cl.getContact(msg.from_).displayName +   " Jomblo yaa"
+                kk.sendText(msg.to,beb)
                 cl.sendText(msg.to,"Iya emang")
-                ki.sendText(msg.to,"Denger denger si lagi nyari pacar doi")
-                kk.sendText(msg.to,"Udah ah gosip mulu doain aja biar dapet")
+                ki.sendText(msg.to,"Denger denger si dia lagi nyari pacar")
+                kr.sendText(msg.to,"Udah ah gosip mulu doain aja biar cepet dapet")
  
             elif "Getvid @" in msg.text:
                 print "[Command]dp executing"
@@ -3993,6 +4120,33 @@ def bot(op):
                 except:
                     cl.sendText(msg.to, "===[StatusMessage]===\n" + contact.statusMessage)
 
+            elif "Sayko " in msg.text:
+                say = msg.text.replace("Sayko ","")
+                lang = 'ko'
+                tts = gTTS(text=say, lang=lang)
+                tts.save("hasil.mp3")
+                kk.sendAudio(msg.to,"hasil.mp3")
+            
+            elif "Sayjp " in msg.text:
+                say = msg.text.replace("Sayjp ","")
+                lang = 'ja'
+                tts = gTTS(text=say, lang=lang)
+                tts.save("hasil.mp3")
+                kr.sendAudio(msg.to,"hasil.mp3")  
+                
+            elif "Sayar " in msg.text:
+                say = msg.text.replace("Sayar ","")
+                lang = 'ar'
+                tts = gTTS(text=say, lang=lang)
+                tts.save("hasil.mp3")
+                kr.sendAudio(msg.to,"hasil.mp3")    
+                
+            elif "Hay " in msg.text:
+                say = msg.text.replace("Hay ","")
+                lang = 'id'
+                tts = gTTS(text=say, lang=lang)
+                tts.save("hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")    
 
             elif msg.text.lower() == 'runtime':
                 eltime = time.time() - mulai
@@ -4097,6 +4251,8 @@ def bot(op):
 
 
 
+             
+
             elif "Google: " in msg.text:
                     a = msg.text.replace("Google: ","")
                     b = urllib.quote(a)
@@ -4144,7 +4300,7 @@ def bot(op):
                     else:
                         cl.sendText(msg.to,"Grup tidak ditemukan")
             
-            elif msg.text in ["Kapten acc"]:
+            elif msg.text in ["Mbok acc"]:
                 if msg.from_ in admin:
                     gid = cl.getGroupIdsInvited()
                     _list = ""
@@ -4156,7 +4312,7 @@ def bot(op):
                         else:
                             break
                     if gid is not None:
-                        cl.sendText(msg.to,"Berhasil terima semua undangan dari grup :\n" + _list)
+                        cl.sendText(msg.to,"Wes Trimo Kabeh undangan grup nak:\n" + _list)
                     else:
                         cl.sendText(msg.to,"Tidak ada grup yang tertunda saat ini")  
                         
