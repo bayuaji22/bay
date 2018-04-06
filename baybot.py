@@ -4173,15 +4173,7 @@ def bot(op):
 
 
 
-            elif "Bc " in msg.text:
-        		bc = msg.text.replace("Bc ","")
-        		gid = chat.getGroupIdsJoined()
-        		if msg.from_ in Creator:
-        		    for i in gid:
-        			chat.sendText(i,""+bc+"")
-        		    cl.sendText(msg.to,"Success BC B")
-        		else:
-        		    cl.sendText(msg.to,"Khusus Admin")        
+            
 
             elif "Google: " in msg.text:
                     a = msg.text.replace("Google: ","")
