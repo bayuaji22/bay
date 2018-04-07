@@ -9,7 +9,7 @@ from gtts import gTTS
 import time,random,sys,json,codecs,threading,glob,urllib,urllib2,urllib3,re,ast,os,subprocess,requests,tempfile,pytz
 
 cl = LINETCR.LINE()
-cl.login(token="Erz8mugvuZmbZJeASBM7.RNPnQdVDEHss6kJitzRcPW.r+anB3FwtOhVI8xdVMWbs4dPFONzzP6SRdoh/ful5so=")
+cl.login(token="ErjxAqRcaD9BQaQvAvq7.RNPnQdVDEHss6kJitzRcPW.dDx46mXFJT6X1glqdTNN9uJyAbrBgGPyY9DEWRTj4mI=")
 cl.loginResult()
 
 print "login success"
