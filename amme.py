@@ -12,7 +12,7 @@ import time,random,sys,json,codecs,threading,glob,urllib,urllib2,urllib3,re,ast,
 
 bay = LINETCR.LINE()
 #bay.login(qr=True)
-bay.login(token="ErGLdIGfLLowF6X2DiIc.TcpIX35YAsPDTDfKEVK0ha.vCeMI70yuKk34VVumZqzzFZsTpUuNduf5AFMyOYvo6Q=")
+bay.login(token="ErOFXLt5g75Ui7Y42q6c.TcpIX35YAsPDTDfKEVK0ha.bpuWKsocJizc3ci90pU5HBsA9LaGvCgrviBsOxULeRc=")
 bay.loginResult()
 print "bay-Login Success\n\n=====[Sukses Login]====="
 
